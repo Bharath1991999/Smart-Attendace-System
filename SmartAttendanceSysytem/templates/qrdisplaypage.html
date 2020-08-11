@@ -1,0 +1,22 @@
+{% extends "basetemplate.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% csrf_token %}
+<center>
+<br><br><br><br>
+
+<h1>Please Scan</h1>
+<br><h5>COURSE CODE & DATE : {{s}}</h5>
+
+<img src ="{% static 'myqr.png' %}" >
+
+<br>
+<h3>Present student count : {{count}}</h3>
+<br>
+</center>
+{% endblock %}
+
+

@@ -1,0 +1,26 @@
+{% extends "basetemplate.html" %}
+
+<title>
+Attendance
+</title>
+{% block content %}
+
+<center>
+
+<br><br><br><br><br>
+<h1>Generate QR Code</h1>
+
+
+<form action="generateqr" method = "post">
+
+{% csrf_token %}
+<br><br><br>
+
+Enter course   :<input type="text" name="courseno" placeholder="Course code"><br><br>
+Enter date       :<input type="text" name="day" placeholder="Day"> <input type="text" name="month" placeholder="Month"> <input type="text" name="Year" placeholder="Year"><br><br>
+
+<input type="submit">
+</center>
+</form>
+<br><br><br><br><br><br>
+{% endblock %}

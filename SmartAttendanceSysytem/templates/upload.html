@@ -1,0 +1,35 @@
+{% extends "basetemplate.html" %}
+<html>
+<head>
+</head>
+
+<body>
+{% block content %}
+
+<form action = 'upload' method = 'post' enctype="multipart/form-data">
+{% csrf_token %}
+<center>
+<div>
+<br><br><br><br><br><br>
+<h1> Please Upload your picture for Facial Recognition </h1>
+<br>
+<h3> It should have the name as your roll number  </h3><br><br>
+<input type="text" name="username" value = {{username}} ><br><br>
+<pre>       <input type="file" name="pic" accept="image/*"></pre>    <br><br>
+<input type = "Submit" >
+</div>
+</center>
+</form>
+
+<div>
+{% for message in messages %}
+<h2> {{message}} </h2>
+{% endfor %}
+</div>
+
+<br><br>
+{% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% extends "basetemplate.html" %}
+<html>
+<head>
+</head>
+
+<body>
+{% block content %}
+
+<form action = 'login' method = 'post' >
+{% csrf_token %}
+<center>
+<div>
+<br><br><br><br><br><br><br><br>
+<h1> Enter your credentials </h1>
+<br>
+<input type="text" name="username" placeholder="username"><br><br>
+<input type="password" name="password" placeholder="password"><br><br>
+<input id="test_image" type="hidden" name="image" placeholder="image">
+
+<input type = "Submit" >
+</div>
+</center>
+</form>
+<br><br>
+<center>
+<div>
+{% for message in messages %}
+<h3> {{message}} </h3>
+{% endfor %}
+</div>
+</center>
+<center>
+<br><br>
+
+
+
+
+
+
+<video id="player" controls autoplay></video>
+<button id="capture">Capture</button>
+<canvas id="canvas" width=320 height=240></canvas>
+
+<script>
+
+
+const player = document.getElementById('player');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  const captureButton = document.getElementById('capture');
+
+  const constraints = {
+    video: true,
+  };
+  
+
+  captureButton.addEventListener('click', () => {
+    // Draw the video frame to the canvas.
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+	
+	var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
+	// here is the most important part because if you dont replace you will get a DOM 18 exception.
+	console.log(image.split(',')[1])
+    var l = document.getElementById("test_image");
+    l.value = image.split(',')[1]
+  });
+  
+  
+
+  // Attach the video stream to the video element and autoplay.
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((stream) => {
+      player.srcObject = stream;
+    });
+	
+
+</script>
+</center>
+{% endblock %}
+
+
+</body>
+</html>

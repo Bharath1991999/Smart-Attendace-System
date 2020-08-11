@@ -1,0 +1,12 @@
+{% extends "basetemplate.html" %}
+
+{% block content %}
+{% csrf_token %}
+
+<br><br><br><br><br><br><br>
+
+<center>
+<h2>Attendance is marked successfully for course {{coursecode}} for date {{date}}.</h2>
+</center>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

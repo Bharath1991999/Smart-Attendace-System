@@ -1,0 +1,28 @@
+{% extends "basetemplate.html" %}
+{% load static %}
+
+{% block content %}
+
+<br><br><br><br><br>
+<h1><center>Please scan qr for your attendance</center></h1>
+<br>
+<center>
+
+ <!img src ="{% static 'myqr.png' %}" >
+<pre>         <input type="file" accept="image/*;capture=camera">
+</pre>
+<br><br>
+
+<form action = 'qrscan' method = 'post' >
+
+{% csrf_token %}
+
+<input type="text" name="username" value={{username}} ><br><br>
+<input type="password" name="password" value={{password}} ><br><br>
+<button onclick="Submit" >Click here to scan this qr </button> 
+</center>
+
+</form>
+<br><br><br><br>
+
+{% endblock %}
